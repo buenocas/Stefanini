@@ -1,0 +1,59 @@
+<div class="container">
+
+    <section class="w-100 d-flex justify-content-around flex-wrap pt-3 pb-3 c-filter-bar">
+
+        <!-- <div>
+            <select name="categoria" id="idcategoria" class="form-control" [(ngModel)]='idCtg' (change) = 'findByCategoria' >
+
+                <option *ngFor = 'let item of listaCategoria' value="{{item.idCategoria}}">
+                    {{item.nomeCategoria}}
+                </option>
+
+            </select>
+        </div> -->
+
+        <div class="d-flex justify-content-end filtros-search">
+            <div class="form-inline my-2 my-lg-0 d-flex justify-content-center pesquisa">
+                <input class="form-control pesquisaMobile" type="search" placeholder="Pesquisar" aria-label="Search">
+                <button class="btn bg-danger">
+                    <img class="img-fluid" width="20" src="../../assets/busca.png" alt="Buscar">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="d-flex justify-content-around flex-wrap my-3">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card text-center my-4 mx-3" *ngFor='let item of listaFilmes'>
+                    <div class="card-body">
+
+                        <img src="{{item.urlImg}}" alt="">
+
+                    </div>
+
+                    <div>
+                        <small for="">Título: {{item.titulo}}</small>
+                        <br>
+                        <small for="">Diretor: {{item.diretor}}</small>
+                        <br>
+                        <small>Categoria: {{item.categoria.nome}}</small>
+
+                    </div>
+                    <button class="btn">Mais Informações</button>
+                    <hr>
+                    <button class="btn">Editar</button>
+                    <hr>
+                    <button class="btn">Deletar</button>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+</div>
