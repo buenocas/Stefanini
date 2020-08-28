@@ -1,48 +1,58 @@
 package com.arquivoflix.Stefanini.Model;
-
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="categoria")
+@Table(name="tb_categoria")
 public class Categoria {
 	
 	@Id
-	@Column(name="idCategoria")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Integer id;
 	
-	@Column(name="nomeCategoria")
 	@NotNull
-	@Size(min= 1, max = 30)
-	private String nomeCategoria;
+	private String nome;
 	
-	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Filmes> filmes;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNomeCategoria() {
-		return nomeCategoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCategoria(String nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Filmes> getFilmes() {
+		return filmes;
+	}
+
+	public void setFilmes(List<Filmes> filmes) {
+		this.filmes = filmes;
 	}
 	
 	
 	
-	
-
 }
+	

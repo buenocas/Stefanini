@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.arquivoflix.Stefanini.Model.Filmes;
 
 @Repository
-public interface FilmesRepository extends JpaRepository<Filmes, Long>{
+public interface FilmesRepository extends JpaRepository<Filmes, Integer>{
 
 	public List<Filmes> findAllByTituloContainingIgnoreCase(String titulo);
 	

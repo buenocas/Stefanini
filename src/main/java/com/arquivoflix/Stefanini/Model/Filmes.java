@@ -11,16 +11,18 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
-@Table(name = "filmes")
+@Table(name = "tb_filmes")
 public class Filmes {
 	
 	
 	@Id
-	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name="id")
+	private Integer id;
 	
 	@Column(name="titulo")
 	@NotNull
@@ -37,66 +39,84 @@ public class Filmes {
 	@Size(min = 1, max = 50)
 	private String diretor;
 	
-	@ManyToOne
-	@JoinColumn(name = "idCategoria")
-	private Categoria categoria;
-	
 	@Column(name="sinopse")
 	private String sinopse;
 	
 	@Column(name="ano")
-	@Size(min = 4, max = 4)
-	private int ano;
+	private Integer ano;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "id_categoria")
+	@NotNull
+	@JsonIgnoreProperties("filmes")
+	private Categoria categoria;
 	
 	
 	
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	public String getUrlImg() {
 		return urlImg;
 	}
+
 	public void setUrlImg(String urlImg) {
 		this.urlImg = urlImg;
 	}
+
 	public String getDiretor() {
 		return diretor;
 	}
-	
+
 	public void setDiretor(String diretor) {
 		this.diretor = diretor;
 	}
-	
-	
+
+
+
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	
+
 	public String getSinopse() {
 		return sinopse;
 	}
+
 	public void setSinopse(String sinopse) {
 		this.sinopse = sinopse;
 	}
-	public int getAno() {
+
+	public Integer getAno() {
 		return ano;
 	}
-	public void setAno(int ano) {
+
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

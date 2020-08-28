@@ -15,47 +15,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arquivoflix.Stefanini.Model.Filmes;
-import com.arquivoflix.Stefanini.Repository.FilmesRepository;
+import com.arquivoflix.Stefanini.Model.Categoria;
+import com.arquivoflix.Stefanini.Repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("/filmes")
-@CrossOrigin(origins = "*")
-public class FilmesController {
+@RequestMapping("/categorias")
+@CrossOrigin(origins ="*", allowedHeaders = "*")
+public class CategoriaController {
 	
 	@Autowired
-	private FilmesRepository repository;
+	private CategoriaRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Filmes>> GetAll(){
-		return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<List<Categoria>> Get(){
+	 return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Filmes> GetById(@PathVariable Integer id){
+	public ResponseEntity<Categoria> GetById(@PathVariable Integer id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("titulo/{titulo}")
-	public ResponseEntity<List<Filmes>> GetByTitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Categoria>> getByName(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Filmes> Post(@RequestBody Filmes filmes){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(filmes));
+	public ResponseEntity<Categoria> post(@RequestBody Categoria categoria){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Filmes> Put(@RequestBody Filmes filmes){
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(filmes));
+	public ResponseEntity<Categoria> put(@RequestBody Categoria categoria){
+		return ResponseEntity.ok(repository.save(categoria));
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id ) {
+	public void delete (@PathVariable Integer id) {
 		repository.deleteById(id);
 	}
+	
+	
+	
 
 }
