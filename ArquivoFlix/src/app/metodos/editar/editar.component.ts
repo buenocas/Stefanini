@@ -32,24 +32,24 @@ export class EditarComponent implements OnInit {
   ngOnInit(): void {
 
     this.idFilmes = this.route.snapshot.params["id"]
-    
+
     this.findById(this.idFilmes)
 
-    
+
 
     this.findAllCategoria();
 
   }
 
-findById(id:number){
+  findById(id: number) {
 
-  return this.filmesService.getByid(id).subscribe((resp: Filmes) =>{
-    this.filmes = resp
-  })
+    return this.filmesService.getByid(id).subscribe((resp: Filmes) => {
+      this.filmes = resp
+    })
 
-}
+  }
 
-  
+
 
   findAllCategoria() {
 
@@ -67,6 +67,23 @@ findById(id:number){
 
   verificar() {
 
-  }
+    this.categoria.idCategoria = this.idCtg
+    this.filmes.categoria = this.categoria
+    console.log(this.filmes);
 
+    if ((this.filmes.titulo == null) || (this.filmes.urlImg == null) || (this.filmes.diretor == null) || (this.categoria.idCategoria == null)) {
+
+      alert("Você precisa preencher todos os campos obrigatórios!!")
+    } else {
+
+      this.filmesService.putFilme(this.filmes).subscribe((resp: Filmes) => {
+        this.filmes = resp
+        alert("Filme Alterado com sucesso")
+        this.router.navigate(['/home'])
+
+      })
+
+    }
+
+  }
 }

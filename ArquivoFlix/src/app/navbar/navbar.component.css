@@ -6,6 +6,22 @@
     background-color: rgb(3, 1, 19);
 }
 
+.adicionar{
+
+    position: absolute;
+    right: 30px;
+    color: white;
+    font-weight: bold;
+    background-color: #4125CC;
+    border: none;
+
+}
+
+.adicionar:hover{
+
+    background-color: #65048C;
+}
+
 a{
     text-decoration: none;
 }

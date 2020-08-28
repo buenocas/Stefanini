@@ -1,0 +1,114 @@
+<div class="container">
+
+    <section class="w-100 d-flex justify-content-around flex-wrap pt-3 pb-3 c-filter-bar">
+
+        <div class="d-flex justify-content-center">
+
+            <select name="idCtg" id="idCtg" class="form-control" [(ngModel)]='idCtg' (change)='findByCategoria()'>
+                <option value=""></option>
+                <option *ngFor='let item of listaCategoria' value="{{item.id}}">
+                    {{item.nome}}
+                </option>
+            </select>
+
+            <div>
+                <button class="btn" (click)="findFilmesByCategoria(idCtg)">Filtrar</button>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end filtros-search">
+            <div class="form-inline my-2 my-lg-0 d-flex justify-content-center pesquisa">
+                <input class="form-control pesquisaMobile" type="search" placeholder="Pesquisar" aria-label="Search"
+                    [(ngModel)]="titulo">
+                <button class="btn bg-danger" id="pesquisar" (click)="findByTitulo()">
+                    <img class="img-fluid" width="20" src="../../assets/busca.png" alt="Buscar">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="d-flex justify-content-around flex-wrap pt-3 py-3">
+
+        <div *ngIf="!filtro">
+
+            <div class="card text-center my-4 mx-3" *ngFor='let item of listCtg'>
+
+                <div class="card-body" *ngFor='let test of item.filmes'>
+
+                    <div class="divimg d-flex w-100 justify-content-center">
+
+                        <img src="{{test.urlImg}}" alt="">
+                    </div>
+
+
+                    <div>
+                        <h5 class="mt-1" for="">Título: {{test.titulo}}</h5>
+
+                        <h5 class="mt-1" for="">Diretor: {{test.diretor}}</h5>
+
+                        <h5 class="mt-1">Categoria: {{test.nome}}</h5>
+
+                    </div>
+
+                    <button class="btn btnhover" [routerLink]="['/consultar', filmes.id]">Consultar</button>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+
+                        <button class="btn btndeletar" (click)="apagarFilme(filmes.id)">Deletar</button>
+
+                        <button class="btn btnhover" [routerLink]="['/editar', filmes.id]">Editar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="d-flex justify-content-around flex-wrap pt-3 py-3">
+
+        <div *ngIf="filtro">
+
+            <div class="card text-center my-4 mx-3" *ngFor='let item of listaFilmes'>
+
+                <div class="card-body">
+
+                    <div class="divimg d-flex w-100 justify-content-center">
+
+                        <img src="{{item.urlImg}}" alt="">
+                    </div>
+
+
+                    <div>
+                        <h5 class="mt-1" for="">Título: {{item.titulo}}</h5>
+
+                        <h5 class="mt-1" for="">Diretor: {{item.diretor}}</h5>
+
+                        <h5 class="mt-1">Categoria: {{item.nome}}</h5>
+
+                    </div>
+
+                    <button class="btn btnhover" [routerLink]="['/consultar', filmes.id]">Consultar</button>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+
+                        <button class="btn btndeletar" (click)="apagarFilme(filmes.id)">Deletar</button>
+
+                        <button class="btn btnhover" [routerLink]="['/editar', filmes.id]">Editar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+</div>

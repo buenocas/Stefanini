@@ -13,6 +13,7 @@ import { AdicionarComponent } from './metodos/adicionar/adicionar.component';
 import { EditarComponent } from './metodos/editar/editar.component';
 import { InfoComponent } from './info/info.component';
 import { RouterModule } from '@angular/router';
+import { FiltrarComponent } from './metodos/filtrar/filtrar.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     AdicionarComponent,
     EditarComponent,
     InfoComponent,
+    FiltrarComponent,
 
   ],
   imports: [

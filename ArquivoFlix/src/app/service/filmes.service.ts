@@ -21,7 +21,7 @@ export class FilmesService {
     return this.http.get(`http://localhost:8080/filmes/${id}`)
   }
 
-  getByTitulo(titulo) {
+  getByTitulo(titulo: String) {
     return this.http.get(`http://localhost:8080/filmes/titulo/${titulo}`)
   }
 
