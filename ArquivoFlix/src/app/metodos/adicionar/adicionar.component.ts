@@ -40,10 +40,19 @@ export class AdicionarComponent implements OnInit {
     this.filmes.categoria = this.categoria
     console.log(this.filmes);
 
-    this.filmesService.postFilme(this.filmes).subscribe((resp: Filmes) => {
-      this.filmes = resp
-      // this.router.navigate(['/home'])
-    })
+
+    if ((this.filmes.titulo == null) || (this.filmes.urlImg == null) || (this.filmes.diretor == null) || (this.categoria.idCategoria == null)) {
+
+      alert("Você precisa preencher todos os campos obrigatórios!!")
+    } else {
+
+      this.filmesService.postFilme(this.filmes).subscribe((resp: Filmes) => {
+        this.filmes = resp
+        alert("Filme Adiocionado com sucesso")
+        this.router.navigate(['/home'])
+      })
+
+    }
 
 
 

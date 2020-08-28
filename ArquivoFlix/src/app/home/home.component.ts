@@ -57,5 +57,17 @@ export class HomeComponent implements OnInit {
 
   }
 
+  apagarFilme(id) {
+    if (window.confirm("Deseja apagar ?")) {
+
+      this.filmesService.deletarFilme(id).subscribe(() => {
+        window.location.reload()
+        window.scroll(0, 0)
+
+
+      })
+    }
+  }
+
 
 }

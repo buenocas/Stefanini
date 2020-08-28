@@ -1,0 +1,50 @@
+.container{
+
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+
+
+    color: dark;
+
+
+
+    background-color: rgb(3, 2, 24);
+}
+
+.card-body{
+
+    width: 350px;
+    height: 500px;
+
+}
+
+.divimg {
+    width: 100%;
+    height: 250px;
+    margin: 0px 0px 0px 0px !important;
+
+    
+  }
+
+.btn{
+
+    color: white;
+    font-weight: bold;
+    background-color: #4125CC;
+
+}
+
+.btnhover:hover{
+
+    background-color: #65048C;
+}
+
+.btndeletar:hover{
+
+
+    background-color: gray;
+
+}

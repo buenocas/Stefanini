@@ -5,6 +5,7 @@ import { Filmes } from '../Model/Filmes';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FilmesService {
 
   constructor(private http: HttpClient) { }
@@ -16,14 +17,30 @@ export class FilmesService {
 
   }
 
-  getByTitulo(titulo){
+  getByid(id: number) {
+    return this.http.get(`http://localhost:8080/filmes/${id}`)
+  }
+
+  getByTitulo(titulo) {
     return this.http.get(`http://localhost:8080/filmes/titulo/${titulo}`)
   }
 
-  postFilme(filme: Filmes){
+  postFilme(filme: Filmes) {
     return this.http.post('http://localhost:8080/filmes', filme)
   }
 
+  putFilme(filme: Filmes) {
+
+    return this.http.put('http://localhost:8080/filmes', filme)
+
+  }
+
+  deletarFilme(id: number) {
+
+    return this.http.delete(`http://localhost:8080/filmes/${id}`)
+
+  }
 
 
 }
+

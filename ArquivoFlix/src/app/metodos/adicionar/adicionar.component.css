@@ -1,0 +1,41 @@
+
+
+.container{
+
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+
+
+    color: white;
+
+
+
+    background-color: rgb(3, 2, 24);
+}
+
+.btncancelar {
+
+    color: white;
+    background-color: #4125CC;
+
+}
+
+.btncancelar:hover{
+
+    background-color: gray;
+}
+
+.btncadastrar{
+
+    color: white;
+    background-color: #4125CC;
+}
+
+.btncadastrar:hover{
+
+    color: white;
+    background-color: #65048C;
+}

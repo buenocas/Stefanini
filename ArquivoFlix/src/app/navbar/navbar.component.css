@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+
+.navbar{
+
+    background-color: rgb(3, 1, 19);
+}
+
+a{
+    text-decoration: none;
+}
+
+.arquivoflixtittle{
+
+    color: rgb(66, 66, 241) ;
+    font-weight: bolder;
+    font-size: 2em;
+    font-family: 'Alata', sans-serif;
+
+}
